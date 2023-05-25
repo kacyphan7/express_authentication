@@ -5,6 +5,7 @@ const app = express();
 const session = require('express-session');
 const flash = require('connect-flash');
 
+
 // environment variables 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 // console.log('>>>>>>>>', SECRET_SESSION);
@@ -25,6 +26,8 @@ app.use(session({
 }));
 
 // add passport 
+app.use(passport.initialize());      // Initialize passport
+app.use(passport.session());         // Add a session
 
 app.use((req, res, next) => {
   console.log(res.locals);
